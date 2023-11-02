@@ -29,7 +29,7 @@ func TestRekey(t *testing.T) {
 
 	m, err := StartManager(&config.Configuration{
 		FixedServices: make([]*fspb.ClientServiceConfig, 0),
-	}, make(chan *fspb.ClientInfoData))
+	}, make(chan *fspb.ClientInfoData), nil)
 	if err != nil {
 		t.Errorf("unable to create config manager: %v", err)
 		return
@@ -60,7 +60,7 @@ func TestWriteback(t *testing.T) {
 
 	m1, err := StartManager(&config.Configuration{
 		PersistenceHandler: ph,
-	}, make(chan *fspb.ClientInfoData))
+	}, make(chan *fspb.ClientInfoData), nil)
 	if err != nil {
 		t.Errorf("unable to create config manager: %v", err)
 		return
@@ -78,7 +78,7 @@ func TestWriteback(t *testing.T) {
 
 	m2, err := StartManager(&config.Configuration{
 		PersistenceHandler: ph,
-	}, make(chan *fspb.ClientInfoData))
+	}, make(chan *fspb.ClientInfoData), nil)
 	if err != nil {
 		t.Errorf("Unable to create new config manager: %v", err)
 		return
